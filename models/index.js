@@ -1,9 +1,18 @@
 const Sequelize = require("sequelize");
 
-// Create model instance
-const sequelize = new Sequelize("books-api", "postgres", "123456", {
-  dialect: "postgres"
-});
+let sequelize;
+const currentEnv = process.env.NODE_ENV || "development";
+
+if (currentEnv === "production") {
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect: "postgres"
+  });
+} else {
+  // Create model instance
+  sequelize = new Sequelize("books-api", "postgres", "123456", {
+    dialect: "postgres"
+  });
+}
 
 // Initialize models
 const models = {
