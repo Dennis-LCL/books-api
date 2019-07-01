@@ -9,7 +9,7 @@ if (currentEnv === "production") {
   });
 } else {
   // Create model instance
-  sequelize = new Sequelize("books-api", "postgres", "123456", {
+  sequelize = new Sequelize("books-api", "postgres", "", {
     dialect: "postgres"
   });
 }
